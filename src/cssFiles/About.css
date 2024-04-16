@@ -1,0 +1,58 @@
+.big {
+    font-size: 5vw;
+}
+
+.centered {
+    text-align: center;
+
+.Square1 {
+    width: 20vw;
+    height: 25vw;
+    background-color: #026f00;   
+    transform: rotate(45deg);
+    margin-right: 15vw;
+}
+
+.Square2 {
+    width: 18vw;
+    height: 25vw;
+    background-color: #026f00;   
+    margin-left: 15vw;
+}
+
+.Square3 {
+    width: 20vw;
+    height: 25vw;
+    background-color: #026f00;   
+    transform: rotate(315deg);
+    margin-right: 15vw;
+}
+
+.blurbLeft {
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    width: 50vw;
+}
+
+.blurbRight {
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    width: 50vw;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text {
+    text-align: center;
+    line-height: 7vh;
+}
+
+.intro {
+    padding-bottom: 15vh;
+}
+/*Use flex direction stuff to put the circles in*/

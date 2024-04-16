@@ -1,0 +1,240 @@
+body {
+  margin: 2;
+  background-color: rgb(123, 211, 137);
+}
+
+h1 {
+  font-size: 300%;
+}
+
+h2 {
+  font-size: 200%;
+}
+
+h3 {
+  font-size: 150%;
+}
+
+p {
+  font-size: 150%;
+}
+
+.intro{
+  width: 100vw;
+  height: 50vh;
+  background-color: rgb(14, 77, 31)
+
+}
+
+.box1{
+  width: 30vw;
+  height: 30vh;
+  background-color:rgb(91, 171, 86);
+  margin-top: 20px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 20px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.box2{
+  width: 30vw;
+  height: 30vh;
+  background-color:rgb(91, 171, 86);
+  margin-top: 0px;
+  margin-right: 200px;
+  margin-left: 400px;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.float-container {
+  padding: 10px;
+
+}
+
+ 
+
+.float-child1 {
+  width: 30%;
+  float: left;
+  padding: 5px;
+  border: 2px solid red;
+
+}
+
+.float-child2 {
+  width: 30%;
+  float: right;
+  padding: 5px;
+  border: 2px solid red;
+
+}
+
+.float-child3 {
+  width: 30%;
+  float: center;
+  padding: 5px;
+  border: 2px solid red;
+
+}
+
+.parent {
+    width: 100vw;
+    display: flex;
+    margin: 5px;
+
+}
+
+ 
+
+.stem1{
+    background-color: #F0F8FF;
+    width: 48%;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    margin: 1%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.stem2{
+    background-color: #F0F8FF;
+    width: 48%;
+    float: right;
+    margin: 1%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.stemHead{
+    width: 100%;
+    padding: 3vh;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #AEC4D1;
+    color: white;
+    font-family:'Lato', sans-serif;
+    font-size: 1.8em;
+    line-height: 1.7;
+
+}
+
+.figureLeft {
+
+    background-color: #5BAB56;
+
+    margin: 1%;
+
+    border-radius: 25px;
+
+    font-size: 0.75em;
+
+    width: 45%;
+
+    height: 60%; float : left;
+
+    display: flex;
+
+    justify-content: center;
+
+     /* Horizontally center */
+
+}
+
+ 
+
+.figureRight {
+
+    background-color: #5BAB56;
+
+    margin: 1%;
+
+    border-radius: 25px;
+
+    font-size: 0.75em;
+
+    width: 45%;
+
+    height: 50%;
+
+    float: right;
+
+    display: flex;
+
+    justify-content: center; /* Horizontally center */
+
+}
+
+.mid {
+
+    background-color: #5BAB56;
+
+    margin: 1%;
+
+    border-radius: 25px;
+
+    font-size: 0.75em;
+
+    width: 45%;
+
+    height: 50%;
+
+    float: left;
+
+    display: flex;
+
+    justify-content: center; /* Horizontally center */
+
+}
+
+.header {
+
+    background-color: #AEC4D1;
+
+    color: white;
+
+}
+
+ 
+
+.whitelink {
+
+    color: rgb(255, 255, 255);
+
+}
+
+ 
+
+.box {
+
+    margin-top: 50px;
+
+    padding: 50px;
+
+    box-sizing: border-box;
+
+    display: inline-block;
+
+}
+
+ 
+
+.bigbox {
+
+    padding: 10vw;
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+   
+
+}
