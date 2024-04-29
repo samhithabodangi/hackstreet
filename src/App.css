@@ -23,7 +23,6 @@ p {
   width: 100vw;
   height: 50vh;
   background-color: rgb(14, 77, 31)
-
 }
 
 .box1{
@@ -36,7 +35,6 @@ p {
   margin-left: 20px;
   justify-content: center;
   align-items: center;
-
 }
 
 .box2{
@@ -48,22 +46,17 @@ p {
   margin-left: 400px;
   justify-content: center;
   align-items: center;
-
 }
 
 .float-container {
   padding: 10px;
-
 }
-
- 
 
 .float-child1 {
   width: 30%;
   float: left;
   padding: 5px;
   border: 2px solid red;
-
 }
 
 .float-child2 {
@@ -71,7 +64,6 @@ p {
   float: right;
   padding: 5px;
   border: 2px solid red;
-
 }
 
 .float-child3 {
@@ -79,17 +71,13 @@ p {
   float: center;
   padding: 5px;
   border: 2px solid red;
-
 }
 
 .parent {
     width: 100vw;
     display: flex;
     margin: 5px;
-
 }
-
- 
 
 .stem1{
     background-color: #F0F8FF;
@@ -101,7 +89,6 @@ p {
     padding: 5px;
     display: flex;
     flex-direction: column;
-
 }
 
 .stem2{
@@ -111,7 +98,6 @@ p {
     margin: 1%;
     display: flex;
     flex-direction: column;
-
 }
 
 .stemHead{
@@ -124,117 +110,61 @@ p {
     font-family:'Lato', sans-serif;
     font-size: 1.8em;
     line-height: 1.7;
-
 }
 
 .figureLeft {
-
     background-color: #5BAB56;
-
     margin: 1%;
-
     border-radius: 25px;
-
     font-size: 0.75em;
-
     width: 45%;
-
     height: 60%; float : left;
-
     display: flex;
-
     justify-content: center;
-
-     /* Horizontally center */
-
 }
 
- 
-
 .figureRight {
-
     background-color: #5BAB56;
-
     margin: 1%;
-
     border-radius: 25px;
-
     font-size: 0.75em;
-
     width: 45%;
-
     height: 50%;
-
     float: right;
-
     display: flex;
-
     justify-content: center; /* Horizontally center */
-
 }
 
 .mid {
-
     background-color: #5BAB56;
-
     margin: 1%;
-
     border-radius: 25px;
-
     font-size: 0.75em;
-
     width: 45%;
-
     height: 50%;
-
     float: left;
-
     display: flex;
-
     justify-content: center; /* Horizontally center */
-
 }
 
 .header {
-
     background-color: #AEC4D1;
-
     color: white;
-
 }
-
- 
 
 .whitelink {
-
     color: rgb(255, 255, 255);
-
 }
-
- 
 
 .box {
-
     margin-top: 50px;
-
     padding: 50px;
-
     box-sizing: border-box;
-
     display: inline-block;
-
 }
 
- 
-
 .bigbox {
-
     padding: 10vw;
-
     width: 100%;
-
     box-sizing: border-box;
-
-   
-
 }

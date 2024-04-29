@@ -4,6 +4,7 @@
 
 .centered {
     text-align: center;
+}
 
 .Square1 {
     width: 20vw;
@@ -55,4 +56,3 @@
 .intro {
     padding-bottom: 15vh;
 }
-/*Use flex direction stuff to put the circles in*/
