@@ -13,7 +13,7 @@ function HeaderShift() {
         <ul style={styles.navbarMenu}>
             <li style={styles.list}><Link to="/" style={styles.tab}>Home</Link></li>
             <li style={styles.list}><Link to="/resources" style={styles.tab}>Resources</Link></li>
-            <li style={styles.list}><Link to="/findHome" style={styles.tab}>Find Home</Link></li>
+            <li style={styles.list}><Link to="/zipCode" style={styles.tab}>Find Home</Link></li>
             <li style={styles.list}><Link to="/about" style={styles.tab}>About</Link></li>
         </ul>
       </div>

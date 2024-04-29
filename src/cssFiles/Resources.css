@@ -16,8 +16,9 @@
     margin-bottom: 1rem;
 }
 
-.para {
+.paraR {
     width: 50vw;
+    margin-top: 2rem;
 }
 
 .center {
@@ -32,7 +33,7 @@
     background-color: #0E4D1F;
    border-radius: 10px;
    color: white;
-   padding: 0.75rem;
+   padding: 1.5rem;
 }
 
 .flex {
@@ -41,5 +42,10 @@
     margin-right: 5rem;
     margin-left: 5rem;
     margin-bottom: 2rem;
-    margin-top: -1rem;
+    margin-top: -2rem;
+}
+
+.resourceIcon {
+    margin-top: 20px;
+    width: 65px;
 }

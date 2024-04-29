@@ -1,0 +1,97 @@
+.zipCodeBody {
+    font-family: 'Roboto';
+    background-color: #dff5df;
+    height: fit-content;
+}
+
+.mapDiv {
+    width: 50vw;
+    height: 60vh;
+}
+
+.zipCodeText{
+    height: 55vh;
+    background-size: 100vw auto; 
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.bannerText {
+    padding-left: 4rem;
+}
+
+.bannerInput {
+    padding-left: 4rem;
+}
+
+.zip {
+    width: 30vw;
+    height: 5vh;
+    border-width: 0;
+    font-size: 18px;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-top: 2.5rem;
+}
+
+.zipButtons {
+    width: 30vw;
+    border-width: 0;
+    font-size: 18px;
+    padding: 1rem;
+    margin-right: 2rem;
+    margin-top: 2.5rem;
+    background-color: #1F6933;
+    color: white;
+    text-decoration: none;
+}
+
+.searchIcon {
+    color: white;
+}
+
+.forSale {
+    padding: 6rem;
+    display: flex;
+    align-items: center;
+}
+
+.forSaleText {
+    margin-left: 4rem;
+}
+
+.forSaleTextL {
+    margin-right: 4rem;
+}
+
+.discoverText {
+    margin-top: 2rem;
+}
+
+.newHome {
+    background-color: #8bc79b;
+    height: 40vh;
+}
+
+.discoverButton {
+    width: 30vw;
+    border-width: 0;
+    font-size: 18px;
+    padding: 1rem;
+    background-color: #1F6933;
+    color: white;
+    text-decoration: none;
+    margin-top: rem;
+}
+
+.discoverText2 {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.discoverBottom{
+    margin-top: -4rem;
+}

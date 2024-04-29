@@ -6,7 +6,7 @@ import '../App.css'
 
 function FrontPageFooter() {
   return(
-  <><div class='figureLeft'><div class = 'font'>
+  <><div className='figureLeft'><div className = 'font'>
       <h3>Find the Right Match</h3>
 
       <ul>
@@ -16,7 +16,7 @@ function FrontPageFooter() {
       </ul>
     </div>
 
-    </div><div class='figureRight'><div>
+    </div><div className='figureRight'><div>
       <h2>Make a Wise Decision</h2>
       <ul>
         <li>Budget</li>

@@ -8,10 +8,6 @@ function About() {
         <div>
             <HeaderShift />
 
-        
-
-        
-
             <div class="intro">
             <h1 class = "big centered">What is Hackstreet?</h1>
             <h3 class = "centered">Hackstreet's mission is to make finding your perfect home easy, accessible, and approachable.</h3>
