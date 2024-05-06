@@ -1,5 +1,6 @@
 import React from 'react';
-import {useState} from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 function Survey() {
@@ -32,7 +33,7 @@ const saveWalkscore = (event) => {
         
 
         <label for="walkscore">Walkscore:</label>
-        <input type="number" id ="inputtedWalkscore" name="walkscore" onChange={saveWalkscore} min = "0" max = "7"></input>
+        <input type="number" id ="inputtedWalkscore" name="walkscore" onChange={saveWalkscore} min = "0" max = "10"></input>
 
 
         </form>
@@ -42,6 +43,10 @@ const saveWalkscore = (event) => {
         <div>
             <p>Saved price: {price}</p>
             <p>Saved walkscore: {walkscore}</p>
+        </div>
+
+        <div>
+        <Link to={"/DecisionMatrixPage/${walkscore}/${price}"} className="button">link</Link>
         </div>
         </div>
 
