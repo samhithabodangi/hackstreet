@@ -6,6 +6,9 @@ import Resources from './pages/Resources.jsx'
 import About from './pages/About.jsx'
 import FindHome from './pages/FindHome.jsx'
 import HomeDetail from './pages/HomeDetail.jsx'
+import Profile from './pages/Profile.jsx'
+import DecisionMatrixPage from './pages/DecisionMatrixPage.jsx'
+import ZipCode from './pages/ZipCode.jsx'
 
 
 import {
@@ -34,6 +37,18 @@ const router = createBrowserRouter([
   {
     path: "homeDetail",
     element: <HomeDetail />
+  },
+  {
+    path: "profile",
+    element: <Profile />
+  },
+  {
+    path: "DecisionMatrixPage/:price/:walkscore",
+    element: <DecisionMatrixPage />
+  },
+  {
+    path: "zipCode",
+    element: <ZipCode />
   },
 ])
 
