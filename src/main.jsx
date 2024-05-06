@@ -7,6 +7,9 @@ import About from './pages/About.jsx'
 import FindHome from './pages/FindHome.jsx'
 import HomeDetail from './pages/HomeDetail.jsx'
 import ZipCode from './pages/ZipCode.jsx'
+import Test from './pages/test.jsx'
+
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 
@@ -16,8 +19,12 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
+    path: "test",
+    element: <Test />, 
+  },
+  {
     path: "resources",
-    element: <Resources />, 
+    element: <Resources />,
   },
   {
     path: "findHome/:zipCodes/:city/:state",

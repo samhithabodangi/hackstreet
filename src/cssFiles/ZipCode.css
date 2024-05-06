@@ -71,11 +71,6 @@
     margin-top: 2rem;
 }
 
-.newHome {
-    background-color: #8bc79b;
-    height: 40vh;
-}
-
 .discoverButton {
     width: 30vw;
     border-width: 0;
@@ -94,4 +89,81 @@
 
 .discoverBottom{
     margin-top: -4rem;
+}
+
+.wholeHouse{
+    background-color: white;
+    width: 325px;
+    height: 275px;
+    margin-right: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.11), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.newHome {
+    padding: 2.5rem;
+    height: fit-content;
+    background-color: #8bc79b;
+}
+
+.lateHome {
+    font-size: 25px;
+    margin-bottom: 2rem;
+}
+
+.allHouses {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.houseImg {
+    width: 325px;
+    border-radius: 15px 15px 0px 0px;
+    height: 50%;
+}
+
+.housePrice {
+    font-weight: bold;
+    font-size: 28px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 0.5rem;
+}
+
+.houseDetails {
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+.bedBathDetail {
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+.marginRight {
+    margin-right: 0.5rem;
+}
+
+.marginLeft {
+    margin-left: 0.5rem;
+}
+
+.homeAddress {
+    margin-top: 0.4rem;
+}
+
+.houseID {
+    margin-top: 0.42rem;
+    color: #929b94;
+    font-size: 12px;
+    display: flex;
+}
+
+.heart {
+    width: 35px;
+    margin-right: 2rem;
+}
+
+.like {
+    border-width: 0;
 }
