@@ -11,6 +11,9 @@ import neighborhood from "../assets/neighborhood.png";
 import apartment from "../assets/apartment.png";
 import FrontPageFooter from '../components/FrontPageFooter';
 import axios from 'axios';
+import { latestHomes } from '../data/property';
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import Heart from "react-heart"
 
 const API_KEY = "Wxjc846YDgHe8OcA9A7J7dHj8EH9UnIb";
 
@@ -68,6 +71,7 @@ const ZipCode = () => {
             </div>
         </div>
 
+
         <div className="forSale">
             <img src={forSale}/>
             <div className="forSaleText">
@@ -114,7 +118,28 @@ const ZipCode = () => {
         </div>
 
         <div className="newHome">
-            Latest Homes
+            <h1 className="lateHome">Latest Homes in USER LOCATION:</h1>
+            
+            <div className="allHouses">
+            {latestHomes.map((data, key) => {
+                const [active, setActive] = useState(false)
+          return (
+            <div key={key}>
+              <div className="wholeHouse">
+              <img src={(`../src/assets/property/${data.image}`)} alt="" className='houseImg'/>
+                <div className="houseDetails">
+                    <div className="housePrice">${data.price}
+                    <Heart isActive={active} onClick={() => setActive(!active)} className="heart" />
+                    </div>
+                    <div className="bedBathDetail"><h4 className="bold marginRight">{data.beds}</h4> Beds | <h4 className="bold marginRight marginLeft">{data.baths}</h4> Baths | <h4 className="bold marginRight marginLeft">{data.floorspace}</h4> sq.ft. </div>
+                    <div className="homeAddress">{data.address}</div>
+                    <div className="houseID">MLS ID #{data.id}, Type: <h4> {data.type}</h4></div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+        </div>
         </div>
 
         <FrontPageFooter />

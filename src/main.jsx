@@ -9,12 +9,10 @@ import HomeDetail from './pages/HomeDetail.jsx'
 import Profile from './pages/Profile.jsx'
 import DecisionMatrixPage from './pages/DecisionMatrixPage.jsx'
 import ZipCode from './pages/ZipCode.jsx'
+import Test from './pages/test.jsx'
 
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 
 const router = createBrowserRouter([
@@ -23,8 +21,12 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
+    path: "test",
+    element: <Test />, 
+  },
+  {
     path: "resources",
-    element: <Resources />, 
+    element: <Resources />,
   },
   {
     path: "findHome/:zipCodes/:city/:state",
