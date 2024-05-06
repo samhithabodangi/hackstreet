@@ -38,10 +38,6 @@ const router = createBrowserRouter([
     path: "homeDetail",
     element: <HomeDetail />
   },
-  {
-    path: "zipCode",
-    element: <ZipCode />
-  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
