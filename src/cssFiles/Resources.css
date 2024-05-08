@@ -3,8 +3,10 @@
     background: linear-gradient(90deg, #139485, #009a84, #00a181, #00a77c, #00ad76, #00b26f, #15b866, #2dbd5b);
     text-align: center;
     margin: 0; 
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 
 .text1 {
@@ -48,4 +50,65 @@
 .resourceIcon {
     margin-top: 20px;
     width: 65px;
+}
+.backboxR{
+    background-color: #A1E498; 
+	margin: 20px;
+    padding: 40px;
+	border-radius: 25px;
+	font-size: 0.75em;
+	width: 45%;
+	height: 30%;
+	float: left;
+	justify-content: left;
+}
+.backboxL{
+    background-color: #A1E498; 
+	margin: 20px;
+    padding: 40px;
+	border-radius: 25px;
+	font-size: 0.75em;
+	width: 45%;
+	height: 30%;
+	float: left;
+	justify-content: left;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 2 em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 40px;
+    justify-content: left;
+    text-align: left;
+    font-size: 20px;
+ 
+}
+ 
+.parent{
+    width: 100vw;
+    height: 30%;
+    display: flex;
+    
+    justify-content: center; /* horizontally center */
+    align-items: center;
+}
+.bigbox {
+	background-color: #D1EFCD;
+	padding: 20px;
+	margin: 20px; 
+	border-radius: 25px;
+	font-size: 0.8em;
+    width:90%; 
+    height: 50%; 
+    float: inherit;  
+    justify-content: center; /* horizontally center */
+    align-items: center;
+    
+}
+.rectangleimage{
+	margin:10px;
+    float: inherit; 
 }

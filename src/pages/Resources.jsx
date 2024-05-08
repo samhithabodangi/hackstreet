@@ -7,7 +7,7 @@ import { faHandHoldingDollar } from '@fortawesome/free-solid-svg-icons'
 import { faShield } from '@fortawesome/free-solid-svg-icons'
 import { faSackDollar } from '@fortawesome/free-solid-svg-icons'
 import { faHandshake } from '@fortawesome/free-solid-svg-icons'
-
+import { Link } from 'react-router-dom';
 
 function Resources() {
     return(
@@ -21,19 +21,18 @@ function Resources() {
             </div>
             <div className="flex">
                 <div className="box">
-                    <h4>Down Payments <br /> and Mortgages</h4> 
+                    <div className = "title"><Link to="/mortage">Mortgage</Link></div>
                     <FontAwesomeIcon icon={faHouse} class="resourceIcon"/>
                 </div>
                 <div className="box">
-                    <h4>Interest Rates <br /> and Loan Types</h4>
+                    <div><Link to="/InterestRate">Interest Rate</Link></div>
+                    
                     <FontAwesomeIcon icon={faHandHoldingDollar} class="resourceIcon"/>
                 </div>
-                <div className="box">
-                    <h4>Insurance <br /> <h4 style={{color: "#0E4D1F"}}>.</h4></h4>
-                    <FontAwesomeIcon icon={faShield} class="resourceIcon"/>
-                </div>
+              
                 <div className="box">
                     <h4>Financial Health <br /> and Security</h4>
+                    <div><Link to="/insurance">Insurance Rate</Link></div>
                     <FontAwesomeIcon icon={faSackDollar} class="resourceIcon"/>
                 </div>
                 <div className="box">

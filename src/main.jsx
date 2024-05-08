@@ -7,6 +7,9 @@ import About from './pages/About.jsx'
 import FindHome from './pages/FindHome.jsx'
 import HomeDetail from './pages/HomeDetail.jsx'
 import ZipCode from './pages/ZipCode.jsx'
+import Mortage from './pages/Mortage.jsx'
+import InterestRate from './pages/InterestRate.jsx'
+import Insurance from './pages/Insurance.jsx'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 
@@ -35,6 +38,18 @@ const router = createBrowserRouter([
     path: "zipCode",
     element: <ZipCode />
   },
+  {
+    path: "mortage",
+    element: <Mortage />
+  },
+  {
+    path: "InterestRate",
+    element: <InterestRate />
+  },
+  {
+    path: "insurance",
+    element: <Insurance />
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
