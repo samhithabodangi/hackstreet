@@ -12,7 +12,8 @@ export const latestHomes = [
         "baths": "1",
         "price": "295000",
         "parking": "2",
-        "construction": "fireplace,landry"
+        "construction": "fireplace,landry",
+        "score": "0"
     },
     {
         "id": "651263730501",
@@ -26,7 +27,8 @@ export const latestHomes = [
         "baths": "2",
         "price": "445000",
         "parking": "1",
-        "construction": "elevator,garage"
+        "construction": "elevator,garage",
+        "score": "0"
     },
     {
         "id": "3511539610225",
@@ -40,7 +42,8 @@ export const latestHomes = [
         "baths": "1",
         "price": "325000",
         "parking": "",
-        "construction": "basement,landry"
+        "construction": "basement,landry",
+        "score": "0"
     },
     {
         "id": "2511639410001",
@@ -54,7 +57,8 @@ export const latestHomes = [
         "baths": "1",
         "price": "665000",
         "parking": "",
-        "construction": "fireplace,gym"
+        "construction": "fireplace,gym",
+        "score": "0"
     },
     {
         "id": "2411639439991",
@@ -68,7 +72,8 @@ export const latestHomes = [
         "baths": "1",
         "price": "265000",
         "parking": "1",
-        "construction": "landry,gym"
+        "construction": "landry,gym",
+        "score": "0"
     },
     {
         "id": "1522639490009",
@@ -82,7 +87,8 @@ export const latestHomes = [
         "baths": "2",
         "price": "765000",
         "parking": "3",
-        "construction": "basement,fireplace"
+        "construction": "basement,fireplace",
+        "score": "0"
     },
     {
         "id": "19639490088",
@@ -96,7 +102,8 @@ export const latestHomes = [
         "baths": "1",
         "price": "215000",
         "parking": "3",
-        "construction": "elevator,garage"
+        "construction": "elevator,garage",
+        "score": "0"
     },
     {
         "id": "1122459390065",
@@ -110,7 +117,8 @@ export const latestHomes = [
         "baths": "1",
         "price": "845000",
         "parking": "3",
-        "construction": "basement,pool"
+        "construction": "basement,pool",
+        "score": "0"
     },
     {
         "id": "1722679430009",
@@ -124,6 +132,7 @@ export const latestHomes = [
         "baths": "1",
         "price": "650000",
         "parking": "3",
-        "construction": "garage,landry"
+        "construction": "garage,landry",
+        "score": "0"
     }
 ]

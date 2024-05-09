@@ -13,8 +13,6 @@ function About() {
             <h3 class = "centered">Hackstreet's mission is to make finding your perfect home easy, accessible, and approachable.</h3>
             </div>
 
-            <Favorites />
-
             <div class = "row">
 
             <div class="blurbLeft">
