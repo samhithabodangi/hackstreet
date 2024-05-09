@@ -1,7 +1,7 @@
 import React from "react"
 import HeaderShift from "../components/HeaderShift"
 import '../cssFiles/About.css'
-
+import Favorites from "./Favorites"
 
 function About() {
     return(
@@ -12,6 +12,8 @@ function About() {
             <h1 class = "big centered">What is Hackstreet?</h1>
             <h3 class = "centered">Hackstreet's mission is to make finding your perfect home easy, accessible, and approachable.</h3>
             </div>
+
+            <Favorites />
 
             <div class = "row">
 

@@ -6,11 +6,15 @@ import Resources from './pages/Resources.jsx'
 import About from './pages/About.jsx'
 import FindHome from './pages/FindHome.jsx'
 import HomeDetail from './pages/HomeDetail.jsx'
+import Profile from './pages/Profile.jsx'
+import DecisionMatrixPage from './pages/DecisionMatrixPage.jsx'
 import ZipCode from './pages/ZipCode.jsx'
 import Mortage from './pages/Mortage.jsx'
 import InterestRate from './pages/InterestRate.jsx'
 import Insurance from './pages/Insurance.jsx'
 import MovingIn from './pages/MovingIn.jsx'
+import Test from './pages/test.jsx'
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
 
@@ -20,8 +24,12 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
+    path: "test",
+    element: <Test />, 
+  },
+  {
     path: "resources",
-    element: <Resources />, 
+    element: <Resources />,
   },
   {
     path: "findHome/:zipCodes/:city/:state",
@@ -34,6 +42,14 @@ const router = createBrowserRouter([
   {
     path: "homeDetail",
     element: <HomeDetail />
+  },
+  {
+    path: "profile",
+    element: <Profile />
+  },
+  {
+    path: "DecisionMatrixPage/:price/:walkscore",
+    element: <DecisionMatrixPage />
   },
   {
     path: "zipCode",
