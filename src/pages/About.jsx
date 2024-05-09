@@ -1,7 +1,6 @@
 import React from "react"
 import HeaderShift from "../components/HeaderShift"
 import '../cssFiles/About.css'
-import '../App.css'
 import Favorites from "./Favorites"
 
 function About() {
@@ -45,6 +44,7 @@ function About() {
 
             <div class = "Square3">picture of decision matrix or something</div> 
             </div>
+            
 
 
         </div>
