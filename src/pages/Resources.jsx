@@ -20,27 +20,23 @@ function Resources() {
                 </div>
             </div>
             <div className="flex">
-                <div className="box">
-                    <div className = "title"><Link to="/mortage">Mortgage</Link></div>
-                    <FontAwesomeIcon icon={faHouse} class="resourceIcon"/>
-                </div>
-                <div className="box">
-                    <div><Link to="/InterestRate">Interest Rate</Link></div>
-                    
-                    <FontAwesomeIcon icon={faHandHoldingDollar} class="resourceIcon"/>
-                </div>
+            
+                    <Link to ="/mortage" className="button"><p>Mortgage</p><FontAwesomeIcon icon={faHouse} className="resourceIcon"/></Link>
+               
+               
+                   <Link to="/InterestRate" className="button"><p>Interest Rate</p><FontAwesomeIcon icon={faHandHoldingDollar} className="resourceIcon"/></Link>
+               
+                   
+                   <Link to="/insurance" className="button"><p>Financial Health</p><FontAwesomeIcon icon={faSackDollar} className="resourceIcon"/></Link>
+                   
+                
               
-                <div className="box">
-                    <h4>Financial Health <br /> and Security</h4>
-                    <div><Link to="/insurance">Insurance Rate</Link></div>
-                    <FontAwesomeIcon icon={faSackDollar} class="resourceIcon"/>
-                </div>
-                <div className="box">
-                    <h4>Closing Costs and <br /> Move-In Expenses</h4>
-                    <FontAwesomeIcon icon={faHandshake} class="resourceIcon"/>
-                </div>
+                    <Link to="/movingIn" className="button"><p>Homebuyers Guide</p><FontAwesomeIcon icon={faHandshake} className="resourceIcon"/></Link>
+                   
+             
             </div>
-        </div>
+            </div>
+      
     )
 }
 

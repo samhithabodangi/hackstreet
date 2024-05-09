@@ -2,9 +2,13 @@
     font-family: 'Roboto';
     background-color: #dff5df;
     height: fit-content;
+    width: 100vw; 
 }
 .big {
     font-size: 5vw;
+}
+.overlay{
+    width: 100vw; 
 }
 
 .centered {
@@ -65,9 +69,9 @@
     background-color: #D1EFCD;
 	padding: 30px;
 	font-size: 0.8em;
-  width:100%; 
+    width: fit-content; 
   height: 50vh; 
-  float: center;  
+  align-items: center;
 }
 .image{
     margin: 40px; 
@@ -77,15 +81,10 @@
     float: right;
 }
 .Simage{
-    margin: 10px; 
-    
-    width: 90px; 
-    display: flex;
-    
-    justify-content: center; /* horizontally center */
-    align-items: center;
-    
-
+    margin: 10px;  
+    width: 150px; 
+    height: 150px; 
+    float: right; 
 }
 .zipCodeBody {
     font-family: 'Roboto';
@@ -146,6 +145,7 @@
     padding: 6rem;
     display: flex;
     align-items: center;
+    
 }
 
 .forSaleText {
@@ -154,6 +154,7 @@
 
 .forSaleTextL {
     margin-right: 4rem;
+    font-size: 1em; 
 }
 
 .discoverText {
@@ -183,6 +184,7 @@
 
 .discoverBottom{
     margin-top: -4rem;
+    width: fit-content; 
 }
 .body {
     font-family: 'Roboto';
@@ -234,14 +236,10 @@
     margin-top: 20px;
     width: 65px;
 }
-.backboxR{
-    color:#1F6933; 
+.backboxR{ 
     background-color: #1F6933;
 	border-radius: 25px;
 	font-size: 0.75em;
-    display: flex;
-    justify-content: center; /* horizontally center */
-    align-items: center;
 	
 }
 
@@ -256,12 +254,15 @@ ul {
     justify-content: right;
     font-size: 20px;
 }
+h2{
+    font-size: 1.5em;
+}
 .parent{
-    width: 100vw;
-    height: 30%;
-    display: flex;
-    justify-content: center; /* horizontally center */
-    align-items: center;
+    height: 50%;
+    margin: 20px; 
+    padding: 10px; 
+    width: fit-content; 
+    display: flex;   
 }
 .bigbox {
 	background-color: #D1EFCD;
@@ -280,4 +281,40 @@ ul {
     height: 40%;
     width: 50%; 
 	float: center;
+}
+
+.greenBox {
+    background-color: #1F6933;
+	border-radius: 25px;
+   
+   color:white; 
+
+    margin-right: 10px;
+    margin-left: 5px;
+    padding: 10px;
+	border-radius: 25px;
+   
+	
+	width: 30%;
+	height: 30%;
+	float: left;
+	justify-content: left;
+}
+
+.Simage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10%; 
+    margin-left: 10%;
+    float: block; 
+}
+p {
+    line-height: 1.5; /* Increase the line spacing between paragraphs */
+    font-size: 1em;
+  }
+.footer{
+    background-color: #1F6933;
+    width: 100%; 
+    height: 50px; 
 }

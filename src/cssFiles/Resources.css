@@ -2,9 +2,8 @@
     font-family: 'Roboto';
     background: linear-gradient(90deg, #139485, #009a84, #00a181, #00a77c, #00ad76, #00b26f, #15b866, #2dbd5b);
     text-align: center;
-    margin: 0; 
     height: 100%;
-    width: 100%;
+    width: fit-content;
     justify-content: center;
     align-items: center;
 }
@@ -17,7 +16,9 @@
 .title {
     margin-bottom: 1rem;
 }
-
+.resourceIcon {
+ height: 100px; 
+}
 .paraR {
     width: 50vw;
     margin-top: 2rem;
@@ -40,35 +41,44 @@
 
 .flex {
     display: flex;
-    justify-content: space-between;
+   
     margin-right: 5rem;
     margin-left: 5rem;
-    margin-bottom: 2rem;
-    margin-top: -2rem;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
 }
 
-.resourceIcon {
-    margin-top: 20px;
-    width: 65px;
-}
+
 .backboxR{
     background-color: #A1E498; 
-	margin: 20px;
-    padding: 40px;
+	margin: 5%;
 	border-radius: 25px;
 	font-size: 0.75em;
-	width: 45%;
+	width: 90%;
 	height: 30%;
-	float: left;
-	justify-content: left;
+    padding: 5px; 
+    
+	justify-content: center;
+}
+.smallBox{
+    background-color: #A1E498; 
+	margin-right: 10%;
+    margin-left: 10%;
+	border-radius: 25px;
+	font-size: 0.75em;
+	width: 50%;
+	height: 50%;
+    padding: 5px; 
+	justify-content: center;
+
 }
 .backboxL{
     background-color: #A1E498; 
-	margin: 20px;
-    padding: 40px;
+	margin-right: 10px;
+    padding: 10px;
 	border-radius: 25px;
 	font-size: 0.75em;
-	width: 45%;
+	width: 30%;
 	height: 30%;
 	float: left;
 	justify-content: left;
@@ -83,16 +93,17 @@ ul {
     padding-left: 40px;
     justify-content: left;
     text-align: left;
-    font-size: 20px;
+    font-size: 1.5em;
  
 }
  
 .parent{
-    width: 100vw;
+    width: 100%;
     height: 30%;
     display: flex;
+   
     
-    justify-content: center; /* horizontally center */
+    justify-content: left; /* horizontally center */
     align-items: center;
 }
 .bigbox {
@@ -112,3 +123,18 @@ ul {
 	margin:10px;
     float: inherit; 
 }
+p {
+    line-height: 1.5; /* Increase the line spacing between paragraphs */
+    font-size: 1.5em;
+  }
+
+  .button {
+    background-color: #1F6933;
+    color: white;
+    padding: 40px; 
+    text-align: center;
+    text-decoration: white;
+    display: inline-block;
+  }
+  
+ 
