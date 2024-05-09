@@ -1,9 +1,9 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+/*import { useParams } from 'react-router-dom';*/
 import Header from "../components/Header";
 
 function DecisionMatrixPage() {
-    
+    /*
     const {walkscore} = useParams();
     const {price} = useParams();
 
@@ -21,6 +21,7 @@ function DecisionMatrixPage() {
         return a.score - b.score;
 
     })
+    */
 
     return(
 
