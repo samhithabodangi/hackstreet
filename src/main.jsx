@@ -7,7 +7,7 @@ import About from './pages/About.jsx'
 import FindHome from './pages/FindHome.jsx'
 import HomeDetail from './pages/HomeDetail.jsx'
 import ZipCode from './pages/ZipCode.jsx'
-import Test from './pages/test.jsx'
+import Profile from './pages/Profile.jsx'
 
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
@@ -19,8 +19,8 @@ const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "test",
-    element: <Test />, 
+    path: "zipCode",
+    element: <ZipCode />
   },
   {
     path: "resources",
@@ -37,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "homeDetail",
     element: <HomeDetail />
+  },
+  {
+    path: "profile",
+    element: <Profile />
   },
 ])
 

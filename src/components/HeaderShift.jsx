@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../assets/logo.png';
+import logo from '../assets/HackStreetLogo.png';
 import { Link } from 'react-router-dom';
 
 function HeaderShift() {
@@ -15,7 +15,7 @@ function HeaderShift() {
             <li style={styles.list}><Link to="/resources" style={styles.tab}>Resources</Link></li>
             <li style={styles.list}><Link to="/zipCode" style={styles.tab}>Find Home</Link></li>
             <li style={styles.list}><Link to="/about" style={styles.tab}>About</Link></li>
-            <li style={styles.list}><Link to="/test" style={styles.tab}>Testin</Link></li>
+            <li style={styles.list}><Link to="/profile" style={styles.tab}>Profile</Link></li>
         </ul>
       </div>
     </div>

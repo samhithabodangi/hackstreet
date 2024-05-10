@@ -2,7 +2,6 @@ import React from "react"
 import HeaderShift from "../components/HeaderShift"
 import '../cssFiles/About.css'
 import '../App.css'
-import Favorites from "./Favorites"
 
 function About() {
     return(
@@ -14,8 +13,6 @@ function About() {
             <h3 class = "centered">Hackstreet's mission is to make finding your perfect home easy, accessible, and approachable.</h3>
             </div>
 
-            <Favorites />
-
             <div class = "row">
 
             <div class="blurbLeft">
@@ -26,7 +23,7 @@ function About() {
             <div class = "Square1">picture of decision matrix or something</div> 
 
             </div>
-            <div class = "row"> {/* g j */} 
+            <div class = "row"> 
 
             <div class = "Square2">picture of finance or something</div>
 

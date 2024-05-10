@@ -18,6 +18,7 @@
     padding: 3rem;
     overflow-y: scroll;
     width: 50vw;
+    margin-top: -1rem;
 }
 
 .cityState {
@@ -175,4 +176,9 @@
 .transportContent {
     margin-left: 12.5rem;
     width: 150px;
+}
+
+.houseScroll {
+    height: 200px;
+    overflow-y: scroll;
 }

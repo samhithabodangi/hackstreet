@@ -8,7 +8,7 @@ export const latestHomes = [
         "image": "1.jpg",
         "type": "Duplex",
         "floorspace": "1264",
-        "beds": "3",
+        "beds": "3", 
         "baths": "1",
         "price": "295000",
         "parking": "2",

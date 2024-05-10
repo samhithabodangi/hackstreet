@@ -93,11 +93,10 @@
 
 .wholeHouse{
     background-color: white;
-    width: 325px;
+    width: fit-content;
     height: 275px;
     margin-right: 1.5rem;
     border-radius: 15px;
-    margin-bottom: 2rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.11), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -116,6 +115,7 @@
     display: flex;
     overflow-x: scroll;
 }
+
 
 .houseImg {
     width: 325px;
@@ -166,4 +166,9 @@
 
 .like {
     border-width: 0;
+}
+
+.sliderCarosiel {
+    margin-left: 1rem;
+    margin-bottom: 1rem;
 }

@@ -7,6 +7,9 @@ import houseListings from '../data/houseListings.json';
 import { Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
+import HouseSearch from './HouseSearch';
+import Heart from "react-heart"
 
 
 const API_KEY = "Wxjc846YDgHe8OcA9A7J7dHj8EH9UnIb";
@@ -44,63 +47,6 @@ function FindHome() {
 
   const mapElement = useRef();
   const [map, setMap] = useState(null);
-
-  const [marker, setMarker] = useState(null);
-
-  const updateMap = () => {
-
-    if (marker) {
-      marker.remove();
-    }
-
-    const url = `https://api.tomtom.com/search/2/structuredGeocode.json?key=${API_KEY}&countryCode=US&postalCode=${zipCodes}`;
-
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        
-        //Centerin de Map
-        const { lat, lon } = data.results[0].position;
-        setLatitude(lat);
-        setLongitude(lon);
-
-        map.setCenter([lon, lat]);
-
-        //csv tings
-        const filteredListings = houseListings.filter(listing => listing.Zipcode == zipCodes);
-        setFilteredListings(filteredListings);
-
-        filteredListings.forEach(listing => {
-          const { Latitude, Longitude} = listing;
-          const marker = new tt.Marker().setLngLat([Longitude, Latitude]).addTo(map);
-          setMarker(marker);
-        });
- 
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
-
-  useEffect(() => {
-
-    const url = `https://api.tomtom.com/search/2/structuredGeocode.json?key=${API_KEY}&countryCode=US&postalCode=${zipCodes}`;
-
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-
-        const { lat, lon } = data.results[0].position;
-
-        let map = tt.map({
-          key: API_KEY,
-          container: mapElement.current,
-          center: [lon, lat],
-          zoom: 10
-        });
-        setMap(map);
-      });
-  }, []); 
 
   const changeMax = (event) => {
     let value = event.target.value;
@@ -181,14 +127,68 @@ function FindHome() {
     setTransport(false);
   };
 
+  const [houses, setHouses] = useState([]);
+
+  useEffect(() => {
+    const url = `https://api.tomtom.com/search/2/structuredGeocode.json?key=${API_KEY}&countryCode=US&postalCode=${zipCodes}`;
+  
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const { lat, lon } = data.results[0].position;
+  
+        let map = tt.map({
+          key: API_KEY,
+          container: mapElement.current,
+          center: [lon, lat],
+          zoom: 10
+        });
+        setMap(map);
+  
+        handleSearch();
+      });
+  }, []);
+
+  const handleSearch = async () => {
+
+  const options = {
+    method: 'POST',
+    url: 'https://realty-in-us.p.rapidapi.com/properties/v3/list',
+    headers: {
+      'content-type': 'application/json',
+      'X-RapidAPI-Key': 'd9ab22c256msh526eefec5627f17p132f48jsn17bb79a286da',
+      'X-RapidAPI-Host': 'realty-in-us.p.rapidapi.com'
+    },
+    data: {
+      limit: 20,
+      offset: 0,
+      postal_code: zipCodes,
+      status: ['for_sale', 'ready_to_build'],
+      sort: {
+        direction: 'desc',
+        field: 'list_date'
+      }
+    }
+  };
+
+  try {
+    const response = await axios.request(options);
+    console.log(response.data);
+    setHouses(response.data.data.home_search.results || []);
+  } catch (error) {
+    console.error(error);
+  }
+
+};
+
   return (
     <div className="homeBody">
       <Header />
-      <div class="mapTextDiv">
+      <div className="mapTextDiv">
         <div ref={mapElement} className="mapContainer" /> 
 
-        <div class="findText">
-          <p class="cityState"><b>Houses and Real Estate Properties Near {city}, {state}</b></p>
+        <div className="findText">
+          <p className="cityState"><b>Houses and Real Estate Properties Near {city}, {state}</b></p>
 
           <div className="optionNorm">
           
@@ -355,8 +355,7 @@ function FindHome() {
                   <label>
                     <input type="radio" value="Public Transportation is Important" checked={transportText === 'Important'} onChange={(e) => setTransportText(e.target.value)}/> Important
                   </label>
-                </div>
-                
+                </div>    
                 <div className="dropdown-item saleItem">
                   <label>
                     <input type="radio" value="Public Transportation is Not Important" checked={transportText === 'Not Importsnt'} onChange={(e) => setTransportText(e.target.value)}/> Not Important
@@ -365,8 +364,30 @@ function FindHome() {
             </div>
             )}
           </div>
-          
           </div>
+
+      <div style={{display: 'flex', marginTop: '3rem'}}>
+        {houses.map((house, index) => {
+          let highRes = `${house.primary_photo.href}`
+          let add = "-w2048_h1536"
+          let indexPosition = highRes.length -4
+          let newHref = highRes.slice(0, indexPosition) + add + highRes.slice(indexPosition)
+
+
+          return (
+          <div key={index}>
+          <div className="wholeHouse">
+          <img src={newHref} alt="Primary Photo" className="houseImg"/>
+          <div className='houseDetails'>
+            <div className="housePrice">${house.list_price}</div>
+            <div className="bedBathDetail"><h4 className="bold marginRight">{house.description.beds}</h4> Beds | <h4 className="bold marginRight marginLeft">{house.description.baths}</h4> Baths | <h4 className="bold marginRight marginLeft">{house.description.sqft}</h4> sq.ft. </div>
+            <div className="homeAddress">{house.location.address.line}, {house.location.address.city}, {house.location.address.state_code} {house.location.address.postal_code}</div>
+          </div>
+          </div>
+          </div>
+          );
+        })}
+      </div>
 
         </div>
       </div>
