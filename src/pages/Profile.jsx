@@ -5,6 +5,7 @@ import '../App.css'
 import Survey from "../pages/Survey"
 import {latestHomes} from "../data/property";
 
+
 function Profile() {
 
     const [favorites, setFavorites] = useState([]);
