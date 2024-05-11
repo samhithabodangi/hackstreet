@@ -9,10 +9,10 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import forSale from "../assets/forSale.png";
 import neighborhood from "../assets/neighborhood.png";
 import apartment from "../assets/apartment.png";
-import FrontPageFooter from '../components/FrontPageFooter';
+import Footer from '../components/Footer';
 import ZipCodeCarousel from './ZipCodeCarousel';
 
-const API_KEY = "Wxjc846YDgHe8OcA9A7J7dHj8EH9UnIb";
+const API_KEY = "AkUtgnA9vXFLN4HTUl6jbhDu6ppbu3mJ";
 
 const ZipCode = () => {
     const [zipCodes, setZipCodes] = useState('');
@@ -46,13 +46,14 @@ const ZipCode = () => {
 
 
     return(
+        <div className="wholeZip">
         <div className="zipCodeBody">
         <HeaderShift />
         <div className="zipCodeText" style={{ backgroundImage: `url(${houseBanner})`}}>
             <div>
                 <div className="bannerText">
-                    <h1 >Find Your Dream Home</h1>
-                    <p >Please Enter your Desired ZipCode</p>
+                    <h1 className="banner">Find Your Dream Home</h1>
+                    <p className="banner">Please Enter your Desired ZipCode</p>
                 </div>
 
                 <div className="bannerInput">
@@ -115,11 +116,11 @@ const ZipCode = () => {
         </div>
 
         <div className="newHome">
-            <h1 className="lateHome">Latest Homes in USER LOCATION:</h1>
+            <h1 className="lateHome">Latest Homes in New York:</h1>
             <ZipCodeCarousel />
         </div>
-
-        <FrontPageFooter />
+        </div>
+        <Footer />
         </div>
     );
 }

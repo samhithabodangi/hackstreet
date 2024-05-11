@@ -6,12 +6,14 @@ import flit from '../assets/flit.png'
 import decision from '../assets/decision.png'
 import filter from '../assets/Filter.png'
 import '../cssFiles/About.css'
+import Footer from './Footer'
 
 function Cover() {
   return (
     <div className='cover'> 
+    <HeaderShift />
         <div className="overlay">
-        <video src={videoBg} autoPlay loop muted width = "500"/>
+        <video src={videoBg} autoPlay loop muted/>
         </div>
         <div className = "back">
         <img className="image" src={pic}/>
@@ -27,7 +29,7 @@ function Cover() {
 
         <div className="parent">
        
-        <div className="greenBox">
+        <div className="greenBox" style={{marginLeft: '-0.5rem'}}>
         <img className="Simage" src={filter}></img>
 
              <h2>Advanced Search Filters </h2>
@@ -41,15 +43,17 @@ function Cover() {
             <p>Making big decisions is hard! Use our decision making tools to prioritize your needs and compare houses.</p>
             </div>
             
-            <div className="greenBox">
+            <div className="greenBox" style={{marginRight: '-0.5rem'}}>
             <img className="Simage" src={flit}/>
                
                 <h2>Financial Literarcy </h2>
                 <p>First time buying a house? Don't know where to begin? Use our resources to build a strong financial foundation for your house.</p>
             </div>
+
           </div>
           <div className = "footer">
             <br></br>
+            <Footer />
           </div>
    
     </div>

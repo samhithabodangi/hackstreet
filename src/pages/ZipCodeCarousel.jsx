@@ -30,19 +30,18 @@ const ZipCodeCarousel = () => {
                 
                 <div className="houseDetails">
                   
-                  <div className="housePrice">
-                    ${data.price}
+                  <div className="housePrice"> ${data.price}
                     <Heart isActive={active} onClick={() => setActive(!active)} className="heart" />
                   </div>
-                  
+                   
                   <div className="bedBathDetail">
-                    <h4 className="bold marginRight">{data.beds}</h4> Beds |{' '}
-                    <h4 className="bold marginRight marginLeft">{data.baths}</h4> Baths |{' '}
-                    <h4 className="bold marginRight marginLeft">{data.floorspace}</h4> sq.ft.{' '}
+                    <h4 className="bold marginR marginL">{data.beds} Beds </h4>
+                    <h4 className="bold marginR marginL">| {data.baths} Baths </h4>
+                    <h4 className="bold ">| {data.floorspace} sq. ft</h4>
                   </div>
 
                   <div className="homeAddress">{data.address}</div>
-                  <div className="houseID">MLS ID #{data.id}, Type: <h4> {data.type}</h4></div>
+                  <div className="houseID">MLS ID {data.id}, Type: {data.type}</div>
                 </div>
                 
                 </div>

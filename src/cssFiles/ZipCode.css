@@ -23,6 +23,10 @@
     padding-left: 4rem;
 }
 
+.banner {
+    margin-bottom: -1.5rem;
+}
+
 .bannerInput {
     padding-left: 4rem;
 }
@@ -133,23 +137,19 @@
 
 .houseDetails {
     margin-left: 1rem;
-    margin-top: 0.5rem;
+    margin-top: 0.8rem;
 }
 .bedBathDetail {
+    margin-top: -0.8rem;
     display: flex;
-    margin-top: 0.5rem;
 }
 
-.marginRight {
-    margin-right: 0.5rem;
-}
-
-.marginLeft {
-    margin-left: 0.5rem;
+.marginR {
+    margin-right: 0.4rem;
 }
 
 .homeAddress {
-    margin-top: 0.4rem;
+    margin-top: -0.9em;
 }
 
 .houseID {

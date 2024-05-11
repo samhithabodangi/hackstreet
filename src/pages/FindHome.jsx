@@ -3,16 +3,15 @@ import Header from '../components/Header';
 import tt from "@tomtom-international/web-sdk-maps";
 import "@tomtom-international/web-sdk-maps/dist/maps.css";
 import '../cssFiles/FindHome.css';
-import houseListings from '../data/houseListings.json';
 import { Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons"
 import axios from 'axios';
-import HouseSearch from './HouseSearch';
-import Heart from "react-heart"
 
 
-const API_KEY = "Wxjc846YDgHe8OcA9A7J7dHj8EH9UnIb";
+const API_KEY = "AkUtgnA9vXFLN4HTUl6jbhDu6ppbu3mJ";
 
 function FindHome() {
 
@@ -128,6 +127,7 @@ function FindHome() {
   };
 
   const [houses, setHouses] = useState([]);
+  const [markers, setMarkers] = useState([]);
 
   useEffect(() => {
     const url = `https://api.tomtom.com/search/2/structuredGeocode.json?key=${API_KEY}&countryCode=US&postalCode=${zipCodes}`;
@@ -141,13 +141,29 @@ function FindHome() {
           key: API_KEY,
           container: mapElement.current,
           center: [lon, lat],
-          zoom: 10
+          zoom: 11.5
         });
         setMap(map);
   
         handleSearch();
       });
   }, []);
+
+  useEffect(() => {
+    if (map) {
+      markers.forEach(marker => marker.remove());
+      houses.forEach(house => {
+        const coordinate = house.location.address.coordinate;
+        if (coordinate && coordinate.lon && coordinate.lat) {
+          const marker = new tt.Marker().setLngLat([coordinate.lon, coordinate.lat]).addTo(map);
+          markers.push(marker);
+        } else {
+          console.error('Missing coordinates for house:', house);
+        }
+      });
+    }
+  }, [houses, map]);
+
 
   const handleSearch = async () => {
 
@@ -156,11 +172,11 @@ function FindHome() {
     url: 'https://realty-in-us.p.rapidapi.com/properties/v3/list',
     headers: {
       'content-type': 'application/json',
-      'X-RapidAPI-Key': 'd9ab22c256msh526eefec5627f17p132f48jsn17bb79a286da',
+      'X-RapidAPI-Key': '4145ef4d78mshdcda7b057bb4199p1d01c1jsn465798dab7a0',
       'X-RapidAPI-Host': 'realty-in-us.p.rapidapi.com'
     },
     data: {
-      limit: 20,
+      limit: 30,
       offset: 0,
       postal_code: zipCodes,
       status: ['for_sale', 'ready_to_build'],
@@ -181,6 +197,26 @@ function FindHome() {
 
 };
 
+const [favorites, setFavorites] = useState([]);
+  
+useEffect(() => {
+  const favorites = JSON.parse(localStorage.getItem('favoriteHouses')) || [];
+  setFavorites(favorites);
+}, []);
+
+const toggleFavorite = (id) => {
+  const index = favorites.indexOf(id);
+  if (index === -1) {
+    const updatedFavorites = [...favorites, id];
+    localStorage.setItem('favoriteHouses', JSON.stringify(updatedFavorites));
+    setFavorites(updatedFavorites);
+  } else {
+    const updatedFavorites = [...favorites.slice(0, index), ...favorites.slice(index + 1)];
+    localStorage.setItem('favoriteHouses', JSON.stringify(updatedFavorites));
+    setFavorites(updatedFavorites);
+  }
+};
+
   return (
     <div className="homeBody">
       <Header />
@@ -188,7 +224,7 @@ function FindHome() {
         <div ref={mapElement} className="mapContainer" /> 
 
         <div className="findText">
-          <p className="cityState"><b>Houses and Real Estate Properties Near {city}, {state}</b></p>
+          <p className="cityState"><b>Real Estate Properties Near {city}, {state}</b></p>
 
           <div className="optionNorm">
           
@@ -366,28 +402,48 @@ function FindHome() {
           </div>
           </div>
 
-      <div style={{display: 'flex', marginTop: '3rem'}}>
-        {houses.map((house, index) => {
-          let highRes = `${house.primary_photo.href}`
-          let add = "-w2048_h1536"
-          let indexPosition = highRes.length -4
-          let newHref = highRes.slice(0, indexPosition) + add + highRes.slice(indexPosition)
+        <div className="housesContainer">
+          {houses.map((house, index) => {
+            let highRes = `${house.primary_photo.href}`;
+            let add = "-w2048_h1536";
+            let indexPosition = highRes.length - 4;
+            let newHref = highRes.slice(0, indexPosition) + add + highRes.slice(indexPosition);
 
+            let id = `${house.property_id}`
 
-          return (
-          <div key={index}>
-          <div className="wholeHouse">
-          <img src={newHref} alt="Primary Photo" className="houseImg"/>
-          <div className='houseDetails'>
-            <div className="housePrice">${house.list_price}</div>
-            <div className="bedBathDetail"><h4 className="bold marginRight">{house.description.beds}</h4> Beds | <h4 className="bold marginRight marginLeft">{house.description.baths}</h4> Baths | <h4 className="bold marginRight marginLeft">{house.description.sqft}</h4> sq.ft. </div>
-            <div className="homeAddress">{house.location.address.line}, {house.location.address.city}, {house.location.address.state_code} {house.location.address.postal_code}</div>
-          </div>
-          </div>
-          </div>
-          );
-        })}
-      </div>
+            const isFavorite = favorites.includes(id);
+
+            return (
+              <div key={index} className="houseItem">
+                <div className="wholeHouse" >
+                  <Link to={`/homeDetail/${id}/${zipCodes}/${city}/${state}`} >
+                    <img src={newHref} alt="Primary Photo" className="houseImg" />
+                  </Link>
+                  <div className='houseDetails'>
+                    <div className="housePrice">
+                      ${house.list_price} 
+                      <div className="favoriteIcon heart">
+                      <FontAwesomeIcon
+                          icon={isFavorite ? faHeartSolid : faHeartRegular}
+                          onClick={() => toggleFavorite(id)}
+                          className={isFavorite ? 'redHeart' : 'regularHeart'}
+                        />
+                      </div>
+                    </div>
+                    <div className="bedBathDetail">
+                      <h4 className="bold marginR marginL">{house.description.beds} Beds</h4>
+                      <h4 className="bold marginR marginL">| {house.description.baths} Baths</h4>
+                      <h4 className="bold">| {house.description.sqft} sq.ft.</h4>
+                    </div>
+                    <div className="homeAddress">{house.location.address.line}, {house.location.address.city}, {house.location.address.state_code} {house.location.address.postal_code}</div>
+                    <div className="houseID">MLS ID {id}, Type: {house.description.type}</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+</div>
+
 
         </div>
       </div>

@@ -1,63 +1,50 @@
-import React, {useState, useEffect} from "react"
-import Header from "../components/Header"
-import '../cssFiles/Profile.css'
-import '../App.css'
-import Survey from "../pages/Survey"
-import {latestHomes} from "../data/property";
-
+import React, { useState, useEffect } from "react";
+import HeaderShift from "../components/HeaderShift";
+import "../cssFiles/Profile.css";
+import "../App.css";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 function Profile() {
-
-    const [favorites, setFavorites] = useState([]);
+  const [favoriteHouses, setFavoriteHouses] = useState([]);
 
   useEffect(() => {
-    setFavorites(latestHomes);
+    const favorites = JSON.parse(localStorage.getItem("favoriteHouses")) || [];
+    setFavoriteHouses(favorites);
   }, []);
 
-  useEffect(() => {
-    console.log(favorites);
-  }, [favorites]);
+  const removeFromFavorites = (id) => {
+    const updatedFavorites = favoriteHouses.filter((house) => house.id !== id);
+    setFavoriteHouses(updatedFavorites);
+    localStorage.setItem("favoriteHouses", JSON.stringify(updatedFavorites));
+  };
 
-  function handleFavorite(id) {
-    const newFavorites = favorites.map(item => {
-      return item.id === id ? { ...item, favorite: !item.favorite } : item;
-    });
+  const sortHousesByPrice = () => {
+    const sortedHouses = [...favoriteHouses].sort((a, b) => a.price - b.price);
+    setFavoriteHouses(sortedHouses);
+  };
 
-    setFavorites(newFavorites);
-
-    var score;
-    
-  }
-
-
-return(
+  return (
     <div className="App">
-        <Header />
-        <Survey />
-      <h1>Initial list</h1>
-      <ul>
-        {favorites.map((item, i) => (
-          <li key={i}>
-            {item.address}{" "}
-            <button
-              onClick={() => {
-                handleFavorite(item.id);
-              }}
-            >
-              {item.favorite === true ? "Remove" : "Add"}
-            </button>
-          </li>
-        ))}
-      </ul>
-
-      <h1>Favorite list</h1>
-      <ul>
-        {favorites.map(item =>
-          item.favorite === true ? <li key={item.id}>{item.address}, {item.price}</li> : null
-        )}
-      </ul>
+      <HeaderShift />
+      <h1>Favorites</h1>
+    <button onClick={sortHousesByPrice}>Sort by Price</button>
+      {favoriteHouses.map((house) => {
+  return (
+    <div key={house.id}>
+      <p>House ID: {house.id}</p>
+      <p>ZipCode: {house.zipCodes}</p>
+      <p>Price: {house.price}</p>
+      <button onClick={() => removeFromFavorites(house.id)}>
+        Remove from Favorites
+      </button>
     </div>
-    )
+  );
+})}
+    </div>
+  );
 }
 
-export default Profile
+
+export default Profile;

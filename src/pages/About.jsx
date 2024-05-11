@@ -1,7 +1,6 @@
 import React from "react"
 import HeaderShift from "../components/HeaderShift"
 import '../cssFiles/About.css'
-import Favorites from "./Favorites"
 
 function About() {
     return(

@@ -1,5 +1,5 @@
 import React from "react"
-import Header from "../components/Header"
+import HeaderShift from "../components/HeaderShift"
 import '../cssFiles/Resources.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 function Resources() {
     return(
         <div className="body">
-            <Header />
+            <HeaderShift />
             <div className="text1">
                 <h1 className="title">Learn Finances</h1>
                 <div className="center">

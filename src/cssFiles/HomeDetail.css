@@ -1,0 +1,103 @@
+.photoGallery {
+    width: 85vw;
+    margin-top: 2rem;
+}
+
+.photoBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.backButton {
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+
+.backArrow {
+    margin-top: 1.5rem;
+    margin-left: 2rem;
+    margin-right: 0.5rem;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 2.5rem;
+    font-size: 18px;
+    margin-top: 1rem;
+}
+
+.homeDetailBody {
+    font-family: 'Roboto';
+}
+
+.houseCarousel {
+    width: 98%; 
+    border-radius: 10px; 
+  }
+
+  .detailPrice {
+    margin-left: 3rem;
+    margin-top: 3rem;
+  }
+
+  .detailAddress {
+    margin-left: 3rem;
+    margin-top: -1rem;
+  }
+
+  .detailsMain {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .mortgage {
+    margin-right: 2rem;
+  }
+
+  .schoolList {
+    margin-top: 20px;
+  }
+  
+  .schoolContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: -2rem;
+  }
+  
+  .schoolItem {
+    padding: 10px; 
+  }
+  
+  .schoolItem h3 {
+    font-size: 1.2rem; 
+    margin-bottom: 5px; 
+  }
+  
+  .schoolItem p {
+    font-size: 0.9rem; 
+    margin: 5px 0; 
+  }
+  
+
+  .schoolsTitle {
+    margin-left: 3rem;
+  }
+
+  .hospital {
+    margin-left: 3rem;
+  }
+
+  .newDetails {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 2rem;
+  }
+
+  .score {
+    font-size: 30px;
+  }

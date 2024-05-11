@@ -53,7 +53,6 @@ const [favorites, setFavorites] = useState([]);
 
     return(
         <div>
-    <Header/>
         <div>
         <div>
 

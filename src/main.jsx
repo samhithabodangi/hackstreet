@@ -13,7 +13,6 @@ import Mortage from './pages/Mortage.jsx'
 import InterestRate from './pages/InterestRate.jsx'
 import Insurance from './pages/Insurance.jsx'
 import MovingIn from './pages/MovingIn.jsx'
-import Test from './pages/test.jsx'
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
@@ -70,7 +69,10 @@ const router = createBrowserRouter([
   {
     path: "movingIn",
     element: <MovingIn />
-
+  }, 
+  {
+    path: "homeDetail/:id/:zipCodes/:city/:state",
+    element: <HomeDetail />
   }
 ])
 
