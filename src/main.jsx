@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 import Resources from './pages/Resources.jsx'
-import About from './pages/About.jsx'
 import FindHome from './pages/FindHome.jsx'
 import HomeDetail from './pages/HomeDetail.jsx'
 import Profile from './pages/Profile.jsx'
@@ -15,6 +14,11 @@ import Insurance from './pages/Insurance.jsx'
 import MovingIn from './pages/MovingIn.jsx'
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
+
+/**
+ * The router function handles all of the navigating and routing 
+ * between pages.
+ */
 
 
 const router = createBrowserRouter([
@@ -33,10 +37,6 @@ const router = createBrowserRouter([
   {
     path: "findHome/:zipCodes/:city/:state",
     element: <FindHome />
-  },
-  {
-    path: "about",
-    element: <About />, 
   },
   {
     path: "homeDetail",

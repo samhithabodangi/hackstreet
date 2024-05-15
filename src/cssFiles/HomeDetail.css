@@ -101,3 +101,31 @@
   .score {
     font-size: 30px;
   }
+
+  .hometext {
+    margin: 3rem;
+  }
+
+  .love {
+    display: flex;
+    margin-bottom: 2rem;
+  }
+
+  .loveText {
+    margin-left: 3rem;
+    font-size: 28px;
+  }
+
+  .loveButton {
+    background-color: green;
+    border-width: 0;
+    width: 240px;
+    font-size: 20px;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-left: 6rem;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+  }

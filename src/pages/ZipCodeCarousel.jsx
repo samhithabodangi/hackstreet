@@ -6,6 +6,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+/*
+The ZipCodeCarousel classes uses the property .json file to display houses in New York. This class is mainly used for design
+as the houses do not lead to the HomeDetail page.
+ */
 
 const ZipCodeCarousel = () => {
     const settings = {

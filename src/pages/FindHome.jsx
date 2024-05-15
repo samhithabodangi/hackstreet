@@ -7,11 +7,19 @@ import { Link, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as faHeartRegular } from "@fortawesome/free-regular-svg-icons"
 import axios from 'axios';
 
 
 const API_KEY = "AkUtgnA9vXFLN4HTUl6jbhDu6ppbu3mJ";
+
+/*
+The FindHome page takes the location information from the ZipCode page to display all the house listings 
+in that area using the Real Estate Rapid API. A map is displayed using the TomTom API that uses the 
+coordinates of the homes and marks them on the map. The markers can be pressed on to see the address 
+line of the home. The user can filter the houses based on the number of beds, baths, and price.
+The user can press on each house to navigate to the HomeDetail page of each house which gives them
+more information about the house.
+*/
 
 function FindHome() {
 
@@ -34,15 +42,16 @@ function FindHome() {
   const [bedBathText, setBedBathText] = useState('Beds + Baths');
   const [selectedHomeOption, setSelectedHomeOption] = useState('Home Type');
   const [hospitalText, setHospitalText] = useState('Hospital Distance');
-  const [transportText, setTransportText] = useState('Public Transportation')
+  const [transportText, setTransportText] = useState('Public Transportation is Important')
 
   //variables
   const [minimum, setMinimum] = useState('');
   const [maximum, setMaximum] = useState('');
   const [beds, setBeds] = useState("");
   const [baths, setBaths] = useState("");
-  const [hospitalDistance, setHospitalDistance]= useState("");
 
+  const [hospitalDistance, setHospitalDistance]= useState("");
+  const [filteredHouses, setFilteredHouses] = useState([]);
 
   const mapElement = useRef();
   const [map, setMap] = useState(null);
@@ -76,7 +85,7 @@ function FindHome() {
     }
 
     else if (minimum && maximum) {
-      setPriceButtonText('${minimum} - ${maximum}');
+      setPriceButtonText(`${minimum} to ${maximum}` );
     } 
     
     else if (minimum) {
@@ -144,8 +153,6 @@ function FindHome() {
           zoom: 11.5
         });
         setMap(map);
-  
-        handleSearch();
       });
   }, []);
 
@@ -154,8 +161,12 @@ function FindHome() {
       markers.forEach(marker => marker.remove());
       houses.forEach(house => {
         const coordinate = house.location.address.coordinate;
+        const address = house.location.address.line;
         if (coordinate && coordinate.lon && coordinate.lat) {
-          const marker = new tt.Marker().setLngLat([coordinate.lon, coordinate.lat]).addTo(map);
+          const marker = new tt.Marker()
+          .setLngLat([coordinate.lon, coordinate.lat])
+          .addTo(map)
+          .setPopup(new tt.Popup().setHTML(address));
           markers.push(marker);
         } else {
           console.error('Missing coordinates for house:', house);
@@ -164,56 +175,122 @@ function FindHome() {
     }
   }, [houses, map]);
 
+  useEffect(() => {
+    handleSearch();
+  }, [selectedSaleOption, beds, baths, minimum, maximum, selectedHomeOption, hospitalDistance]);
+
+  useEffect(() => {
+    filterHousesByDistance();
+  }, [houses, hospitalDistance]);
 
   const handleSearch = async () => {
+    const requestData = {
+        limit: 30,
+        offset: 0,
+        postal_code: zipCodes,
+        sort: {
+            direction: 'desc',
+            field: 'list_date'
+        }
+    };
 
-  const options = {
-    method: 'POST',
-    url: 'https://realty-in-us.p.rapidapi.com/properties/v3/list',
-    headers: {
-      'content-type': 'application/json',
-      'X-RapidAPI-Key': '4145ef4d78mshdcda7b057bb4199p1d01c1jsn465798dab7a0',
-      'X-RapidAPI-Host': 'realty-in-us.p.rapidapi.com'
-    },
-    data: {
-      limit: 30,
-      offset: 0,
-      postal_code: zipCodes,
-      status: ['for_sale', 'ready_to_build'],
-      sort: {
-        direction: 'desc',
-        field: 'list_date'
-      }
+    if (selectedSaleOption === 'For Sale') {
+        requestData.status = ['for_sale', 'ready_to_build'];
+    } else {
+        requestData.status = ['for_rent'];
     }
-  };
 
-  try {
-    const response = await axios.request(options);
-    console.log(response.data);
-    setHouses(response.data.data.home_search.results || []);
-  } catch (error) {
-    console.error(error);
+    if (beds) {
+      requestData.beds = { min: parseInt(beds) };
   }
 
+  if (baths) {
+      requestData.baths = { min: parseFloat(baths) };
+  }
+
+    if (minimum || maximum) {
+        requestData.list_price = {};
+        if (minimum) {
+            requestData.list_price.min = parseInt(minimum.replace('$', ''), 10);
+        }
+        if (maximum) {
+            requestData.list_price.max = parseInt(maximum.replace('$', ''), 10);
+        }
+    }
+
+    if (selectedHomeOption) {
+      const typeMap = {
+          'Apartment': 'apartment',
+          'Condo': 'condos',
+          'Townhouse': 'condo_townhome',
+          'House': 'single_family',
+          'Multi-Family': 'multi_family'
+      };
+      const homeType = typeMap[selectedHomeOption];
+      if (homeType) {
+          requestData.type = [homeType];
+      }
+  }
+
+    const options = {
+        method: 'POST',
+        url: 'https://realty-in-us.p.rapidapi.com/properties/v3/list',
+        headers: {
+            'content-type': 'application/json',
+            'X-RapidAPI-Key': '92303c2ffcmsh96819e43b94a94ep155311jsna0d4d19f4f2a',
+            'X-RapidAPI-Host': 'realty-in-us.p.rapidapi.com'
+        },
+        data: requestData
+    };
+
+    try {
+        const response = await axios.request(options);
+        console.log(response.data);
+        setHouses(response.data.data.home_search.results || []);
+    } catch (error) {
+        console.error(error);
+    }
+
+    if (hospitalDistance) {
+      hospitalFilter();
+    }
 };
 
-const [favorites, setFavorites] = useState([]);
-  
-useEffect(() => {
-  const favorites = JSON.parse(localStorage.getItem('favoriteHouses')) || [];
-  setFavorites(favorites);
-}, []);
+const searchNearestHospital = async (latitude, longitude) => {
+  const url = `https://api.tomtom.com/search/2/categorySearch/hospital.json?key=${API_KEY}&lat=${latitude}&lon=${longitude}&limit=1`;
 
-const toggleFavorite = (id) => {
-  const index = favorites.indexOf(id);
-  if (index === -1) {
-    const updatedFavorites = [...favorites, id];
-    localStorage.setItem('favoriteHouses', JSON.stringify(updatedFavorites));
-    setFavorites(updatedFavorites);
-  } else {
-    const updatedFavorites = [...favorites.slice(0, index), ...favorites.slice(index + 1)];
-    localStorage.setItem('favoriteHouses', JSON.stringify(updatedFavorites));
-    setFavorites(updatedFavorites);
+  try {
+      const response = await fetch(url);
+      const data = await response.json();
+      const hospitals = data.results;
+
+      if (hospitals && hospitals.length > 0) { 
+          const nearestHospital = hospitals[0];
+          console.log('Nearest Hospital:', nearestHospital.poi.name);
+          console.log('Distance:', nearestHospital.dist, 'meters');
+          return nearestHospital;
+      } else {
+          console.log('No hospitals found near the specified coordinates.');
+          return null;
+      }
+  } catch (error) {
+      console.error('Error searching for hospitals:', error);
+      return null;
+  }
+};
+
+const filterHousesByDistance = async () => {
+  if (hospitalDistance) {
+    const nearestHospital = await searchNearestHospital(latitude, longitude);
+    if (!nearestHospital) return;
+    
+    const maxDistance = parseInt(hospitalDistance);
+    const filteredHouses = houses.filter((house) => {
+      const distanceToHospital = calculateDistance(house.latitude, house.longitude, nearestHospital.position.lat, nearestHospital.position.lon);
+      return distanceToHospital <= maxDistance * 1609.34; 
+    });
+
+    setFilteredHouses(filteredHouses);
   }
 };
 
@@ -394,7 +471,7 @@ const toggleFavorite = (id) => {
                 </div>    
                 <div className="dropdown-item saleItem">
                   <label>
-                    <input type="radio" value="Public Transportation is Not Important" checked={transportText === 'Not Importsnt'} onChange={(e) => setTransportText(e.target.value)}/> Not Important
+                    <input type="radio" value="Public Transportation is Not Important" checked={transportText === 'Not Important'} onChange={(e) => setTransportText(e.target.value)}/> Not Important
                   </label>
                 </div>
             </div>
@@ -411,11 +488,9 @@ const toggleFavorite = (id) => {
 
             let id = `${house.property_id}`
 
-            const isFavorite = favorites.includes(id);
-
             return (
               <div key={index} className="houseItem">
-                <div className="wholeHouse" >
+                <div className="wholeHome" >
                   <Link to={`/homeDetail/${id}/${zipCodes}/${city}/${state}`} >
                     <img src={newHref} alt="Primary Photo" className="houseImg" />
                   </Link>
@@ -423,11 +498,6 @@ const toggleFavorite = (id) => {
                     <div className="housePrice">
                       ${house.list_price} 
                       <div className="favoriteIcon heart">
-                      <FontAwesomeIcon
-                          icon={isFavorite ? faHeartSolid : faHeartRegular}
-                          onClick={() => toggleFavorite(id)}
-                          className={isFavorite ? 'redHeart' : 'regularHeart'}
-                        />
                       </div>
                     </div>
                     <div className="bedBathDetail">
@@ -435,7 +505,7 @@ const toggleFavorite = (id) => {
                       <h4 className="bold marginR marginL">| {house.description.baths} Baths</h4>
                       <h4 className="bold">| {house.description.sqft} sq.ft.</h4>
                     </div>
-                    <div className="homeAddress">{house.location.address.line}, {house.location.address.city}, {house.location.address.state_code} {house.location.address.postal_code}</div>
+                    <div className="houseAddress">{house.location.address.line}, {house.location.address.city}, {house.location.address.state_code} {house.location.address.postal_code}</div>
                     <div className="houseID">MLS ID {id}, Type: {house.description.type}</div>
                   </div>
                 </div>

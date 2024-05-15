@@ -1,15 +1,15 @@
-.body {
+.resourceBody {
     font-family: 'Roboto';
     background: linear-gradient(90deg, #139485, #009a84, #00a181, #00a77c, #00ad76, #00b26f, #15b866, #2dbd5b);
     text-align: center;
-    height: 100%;
+    height: 100vh;
     width: fit-content;
     justify-content: center;
     align-items: center;
 }
 
 .text1 {
-    margin-top: 4rem;
+    margin-top: 3rem;
     margin-bottom: 4rem;
 }
 
@@ -17,10 +17,10 @@
     margin-bottom: 1rem;
 }
 .resourceIcon {
- height: 100px; 
+ height: 50px; 
 }
 .paraR {
-    width: 50vw;
+    width: 62vw;
     margin-top: 2rem;
 }
 
@@ -41,11 +41,6 @@
 
 .flex {
     display: flex;
-   
-    margin-right: 5rem;
-    margin-left: 5rem;
-    margin-bottom: 5rem;
-    margin-top: 5rem;
 }
 
 
@@ -101,11 +96,10 @@ ul {
     width: 100%;
     height: 30%;
     display: flex;
-   
-    
-    justify-content: left; /* horizontally center */
+    justify-content: left; 
     align-items: center;
 }
+
 .bigbox {
 	background-color: #D1EFCD;
 	padding: 20px;
@@ -115,7 +109,7 @@ ul {
     width:90%; 
     height: 50%; 
     float: inherit;  
-    justify-content: center; /* horizontally center */
+    justify-content: center; 
     align-items: center;
     
 }
@@ -123,8 +117,9 @@ ul {
 	margin:10px;
     float: inherit; 
 }
+
 p {
-    line-height: 1.5; /* Increase the line spacing between paragraphs */
+    line-height: 1.5; 
     font-size: 1.5em;
   }
 
@@ -132,9 +127,15 @@ p {
     background-color: #1F6933;
     color: white;
     padding: 40px; 
+    width: 150px;
+    height: 150px;
     text-align: center;
     text-decoration: white;
-    display: inline-block;
+    border-radius: 10px;
+  }
+
+  .shiftUp {
+    margin-top: 0px;
   }
   
  

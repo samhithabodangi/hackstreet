@@ -10,17 +10,29 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Footer from "../components/Footer";
 
+/**
+ * The HomeDetail page displays information about each house that the user selects. 
+ * Using the property id and location dat from the FindHome page, it calls the Rapid API
+ * to get more information about each house. Additionally, the Rapid API displays information
+ * about the closes schools and the school rating. The HomeDetail class uses the TomTom api to
+ * show the user the closest hospital from the house and the distance from the hospital in 
+ * case of emergencies. Using the Walk score API which is embeded in Rapid, the page
+ * displays the walk score, the transit score, and the public transportation score
+ * of the street. The user can add the home to the favorites in the profile page using 
+ * local storage, which will pass the informatio to that page.
+ */
+
 function HomeDetail() {
 
   const { id } = useParams();
   const { zipCodes } = useParams();
   const { city } = useParams();
   const { state  } = useParams();
+
   const [photos, setPhotos] = useState([]);
   const [details, setDetails] = useState([]);
   const [nearestHospital, setNearestHospital] = useState(null); 
   const [walkScore, setWalkScore] = useState([]);
-  const [price, setPrice] = useState();
 
   useEffect(() => {
     getPhotos();
@@ -38,7 +50,7 @@ function HomeDetail() {
         property_id: `${id}`
     },
     headers: {
-        'X-RapidAPI-Key': '4145ef4d78mshdcda7b057bb4199p1d01c1jsn465798dab7a0',
+        'X-RapidAPI-Key': '92303c2ffcmsh96819e43b94a94ep155311jsna0d4d19f4f2a',
         'X-RapidAPI-Host': 'realty-in-us.p.rapidapi.com'
     }
     };
@@ -55,6 +67,13 @@ function HomeDetail() {
  const [longitude, setLongitude] = useState('')
  const [latitude, setLatitude] = useState('')
 
+ const [price, setPrice] = useState();
+ const [bed, setBed] = useState();
+ const [bath, setBath] = useState();
+ const [area, setArea] = useState();
+ const [addressLine, setAddressLine] = useState();
+ const [photoHref, setPhotoHref] = useState();
+
   const handleSearch = async () => {
 
     const options = {
@@ -64,7 +83,7 @@ function HomeDetail() {
         property_id: id
       },
       headers: {
-        'X-RapidAPI-Key': '4145ef4d78mshdcda7b057bb4199p1d01c1jsn465798dab7a0',
+        'X-RapidAPI-Key': '92303c2ffcmsh96819e43b94a94ep155311jsna0d4d19f4f2a',
         'X-RapidAPI-Host': 'realty-in-us.p.rapidapi.com'
       }
     };
@@ -76,11 +95,15 @@ function HomeDetail() {
         setLatitude(response.data.data.home.location.address.coordinate.lat)
         setLongitude(response.data.data.home.location.address.coordinate.lon)
 
-        setPrice(response.data.data.home.list_price)
-
         setDetails([response.data.data.home]);
 
-   
+        setPrice(response.data.data.home.list_price)
+        setBed(response.data.data.home.description.beds)
+        setBath(response.data.data.home.description.baths)
+        setArea(response.data.data.home.description.sqft)
+        setAddressLine(response.data.data.home.location.address.line)
+        setPhotoHref(response.data.data.home.photos[0].href)
+
       } catch (error) {
         console.error(error);
       }
@@ -110,6 +133,8 @@ const searchNearestHospital = async (latitude, longitude) => {
     }
 };
 
+const [houseWalkScore, setHouseWalkScore] = useState();
+
 const getWalkScore = async () => {
     const wsApiKey = '65b0c173fbe59ac0e779efa513c371a6'; 
     const address = encodeURIComponent(`${city}, ${state} ${zipCodes}`);
@@ -119,7 +144,7 @@ const getWalkScore = async () => {
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': '4145ef4d78mshdcda7b057bb4199p1d01c1jsn465798dab7a0',
+        'X-RapidAPI-Key': '92303c2ffcmsh96819e43b94a94ep155311jsna0d4d19f4f2a', 
         'X-RapidAPI-Host': 'walk-score.p.rapidapi.com'
       }
     };
@@ -129,6 +154,7 @@ const getWalkScore = async () => {
       const result = await response.json();
       console.log(result)
       setWalkScore(result);
+      setHouseWalkScore(result.walkscore)
     } catch (error) {
       console.error('Error fetching Walk Score:', error);
     }
@@ -155,7 +181,7 @@ const getWalkScore = async () => {
     
   const addToFavorites = () => {
     const favorites = JSON.parse(localStorage.getItem('favoriteHouses')) || [];
-    const houseDetails = { id, zipCodes, city, state, price };
+    const houseDetails = { id, zipCodes, city, state, price, bed, bath, area, addressLine, photoHref, houseWalkScore };
     console.log("House Details:", houseDetails); 
     localStorage.setItem('favoriteHouses', JSON.stringify([...favorites, houseDetails]));
     setIsFavorite(true);
@@ -234,6 +260,9 @@ const getWalkScore = async () => {
                                 <h2>Estimated Monthly Payment</h2>
                             </div>
                         </div>
+                        <div className="hometext">
+                          <p>{detail.description.text}</p>
+                        </div>
                         <div className="schoolList">
                         <h1 className="schoolsTitle">Schools</h1>
                         <div className="schoolContainer">
@@ -276,14 +305,18 @@ const getWalkScore = async () => {
             )}
         </div>
         </div>
-        {isFavorite ? (
-          <button onClick={removeFromFavorites}>Remove from Favorites</button>
-        ) : (
-          <button onClick={addToFavorites}>Add to Favorites</button>
-        )}
+        <div className="love">
+          <h2 className="loveText">Love The House? Favorite and View it in the Profile Tab!</h2>
+          {isFavorite ? (
+            <button onClick={removeFromFavorites} className="loveButton">Remove Favorite</button>
+          ) : (
+            <button onClick={addToFavorites} className="loveButton">Favorite</button>
+          )}
+          <Link to="/resources" className="loveButton resourceBut">Resources</Link>
+        </div>
             <Footer />
         </div>
     )
 }
 
-export default HomeDetail
+export default HomeDetail; 

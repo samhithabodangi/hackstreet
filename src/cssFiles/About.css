@@ -253,12 +253,12 @@ ul {
 h2{
     font-size: 1.5em;
 }
-.parent{
-    height: 50%;
-    margin: 20px; 
-    padding: 10px; 
-    width: fit-content; 
-    display: flex;   
+
+.parents {
+    display: flex;
+    width: 100%;
+    padding-bottom: 1rem;
+    margin-right: -1.5rem;
 }
 .bigbox {
 	background-color: #D1EFCD;
@@ -287,14 +287,11 @@ h2{
 
     margin-right: 10px;
     margin-left: 5px;
-    padding: 10px;
+    padding: 15px;
 	border-radius: 25px;
-   
-	
 	width: 30%;
 	height: 30%;
-	float: left;
-	justify-content: left;
+    font-size: 14px;
 }
 
 .Simage {
@@ -303,14 +300,17 @@ h2{
     justify-content: center;
     margin-right: 10%; 
     margin-left: 10%;
-    float: block; 
 }
 p {
-    line-height: 1.5; /* Increase the line spacing between paragraphs */
+    line-height: 1.5;
     font-size: 1em;
   }
 .footer{
     background-color: #1F6933;
     width: 100%; 
     height: 50px; 
+}
+
+.finan {
+    width: 35%;
 }

@@ -7,7 +7,7 @@ function Footer() {
     <div style={styles.container}>
       <div style={styles.title}>
         <img src={logo}  alt="Logo" style={styles.logo}/>
-        <h1 style={styles.name}>Hackstreet</h1>
+        <h1 style={styles.name}>HackStreet</h1>
       </div>
       <div style={styles.buttonsContainer}>
         <ul style={styles.navbarMenu}>

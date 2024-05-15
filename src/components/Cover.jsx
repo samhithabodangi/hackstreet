@@ -27,9 +27,9 @@ function Cover() {
         </div>
         </div>
 
-        <div className="parent">
+        <div className="parents">
        
-        <div className="greenBox" style={{marginLeft: '-0.5rem'}}>
+        <div className="greenBox" style={{marginLeft: '1rem'}}>
         <img className="Simage" src={filter}></img>
 
              <h2>Advanced Search Filters </h2>
@@ -40,22 +40,19 @@ function Cover() {
             
             <img className="Simage" src={decision}/>
              <h2>Decision Making Tools</h2>
-            <p>Making big decisions is hard! Use our decision making tools to prioritize your needs and compare houses.</p>
+            <p>Making big decisions is hard! Use our decision making tools to prioritize your needs.</p>
             </div>
             
-            <div className="greenBox" style={{marginRight: '-0.5rem'}}>
+            <div className="greenBox">
             <img className="Simage" src={flit}/>
                
                 <h2>Financial Literarcy </h2>
-                <p>First time buying a house? Don't know where to begin? Use our resources to build a strong financial foundation for your house.</p>
+                <p>First time buying a house? Don't know where to begin? Use our resources to build a strong financial foundation.</p>
             </div>
 
           </div>
-          <div className = "footer">
-            <br></br>
+          
             <Footer />
-          </div>
-   
     </div>
   )
 }

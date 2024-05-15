@@ -14,6 +14,11 @@ import ZipCodeCarousel from './ZipCodeCarousel';
 
 const API_KEY = "AkUtgnA9vXFLN4HTUl6jbhDu6ppbu3mJ";
 
+/*
+The ZipCode class takes user input zipcode and navigates to the FindHome page, passing the 
+zipcode, state, and city that were found from the users input using the TomTom API.
+*/
+
 const ZipCode = () => {
     const [zipCodes, setZipCodes] = useState('');
     const [city, setCity] = useState('');
@@ -69,12 +74,11 @@ const ZipCode = () => {
             </div>
         </div>
 
-
         <div className="forSale">
             <img src={forSale}/>
             <div className="forSaleText">
                 <h1>Discover New Homes</h1>
-                <p className="discoverText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                <p className="discoverText">Find the perfect home with your desired features. Filter homes with your input to find your dream home.</p>
                 <div >
                     <input
                         inputMode="number"
@@ -91,7 +95,7 @@ const ZipCode = () => {
         <div className="forSale discoverBottom">
             <div className="forSaleTextL">
                 <h1>Assess The Community</h1>
-                <p className="discoverText2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                <p className="discoverText2">Understand the community and neighborhood by pressing each house to learn more before closing a deal.</p>
                 <Link to="/resources" className="discoverButton">Learn More</Link>
             </div>
             <img src={neighborhood} style={{width: '612px'}}/>
@@ -100,8 +104,8 @@ const ZipCode = () => {
         <div className="forSale discoverBottom">
             <img src={apartment} style={{width: '612px'}}/>
             <div className="forSaleText">
-                <h1>Find New Properties</h1>
-                <p className="discoverText">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
+                <h1>Make Confident Decisions</h1>
+                <p className="discoverText">Save the houses by favoriting them and comparing them with our decision matrix in the Profile page</p>
                 <div >
                     <input
                         inputMode="number"
@@ -116,7 +120,7 @@ const ZipCode = () => {
         </div>
 
         <div className="newHome">
-            <h1 className="lateHome">Latest Homes in New York:</h1>
+            <h1 className="lateHome">Latest Real Estate Properties in New York:</h1>
             <ZipCodeCarousel />
         </div>
         </div>
