@@ -22,8 +22,9 @@ function Profile() {
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem("favoriteHouses")) || [];
     setFavoriteHouses(favorites);
+    sortHousesByPrice();
   }, []);
-
+//Allows for user to remove a house from the favorites on the profile page.
   const removeFromFavorites = (id) => {
     const updatedFavorites = favoriteHouses.filter((house) => house.id !== id);
     setFavoriteHouses(updatedFavorites);
