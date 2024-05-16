@@ -50,7 +50,7 @@ function HomeDetail() {
         property_id: `${id}`
     },
     headers: {
-        'X-RapidAPI-Key': '92303c2ffcmsh96819e43b94a94ep155311jsna0d4d19f4f2a',
+        'X-RapidAPI-Key': 'da6093162dmsh4d39d1749523e76p1dc078jsn9bd99f1920ae',
         'X-RapidAPI-Host': 'realty-in-us.p.rapidapi.com'
     }
     };
@@ -83,7 +83,7 @@ function HomeDetail() {
         property_id: id
       },
       headers: {
-        'X-RapidAPI-Key': '92303c2ffcmsh96819e43b94a94ep155311jsna0d4d19f4f2a',
+        'X-RapidAPI-Key': 'da6093162dmsh4d39d1749523e76p1dc078jsn9bd99f1920ae',
         'X-RapidAPI-Host': 'realty-in-us.p.rapidapi.com'
       }
     };
@@ -144,7 +144,7 @@ const getWalkScore = async () => {
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': '92303c2ffcmsh96819e43b94a94ep155311jsna0d4d19f4f2a', 
+        'X-RapidAPI-Key': 'da6093162dmsh4d39d1749523e76p1dc078jsn9bd99f1920ae', 
         'X-RapidAPI-Host': 'walk-score.p.rapidapi.com'
       }
     };
